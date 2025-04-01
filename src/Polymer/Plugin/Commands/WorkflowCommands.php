@@ -2,7 +2,7 @@
 
 namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Commands;
 
-use Composer\IO\ConsoleIO;
+use Robo\Symfony\ConsoleIO;
 use Consolidation\AnnotatedCommand\Attributes\Command;
 use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
 
@@ -10,8 +10,6 @@ class WorkflowCommands extends TaskBase
 {
   /**
    * Generate Pantheon GitHub workflow.
-   *
-   * @param \Composer\IO\ConsoleIO $io
    *
    * @return int
    */
