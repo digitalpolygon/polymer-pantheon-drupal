@@ -1,0 +1,2 @@
+pantheon:
+  git-repo-regex: '/^ssh:\/\/codeserver\.dev\.[a-f0-9\-]+@codeserver\.dev\.[a-f0-9\-]+\.drush\.in:2222\/~\/repository\.git$/'
