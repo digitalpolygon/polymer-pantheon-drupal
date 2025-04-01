@@ -1,0 +1,26 @@
+{
+    "name": "digitalpolygon/polymer-pantheon-drupal",
+    "description": "Helpful scripts and tools for integrating Drupal with Pantheon.",
+    "version": "1.0.0",
+    "authors":[
+        {
+            "name": "Digital Polygon Engineering",
+            "homepage": "https://www.digitalpolygon.com/",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/digitalpolygon/polymer-pantheon-drupal/issues",
+        "source": "https://github.com/digitalpolygon/polymer-pantheon-drupal"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "DigitalPolygon\\PolymerPantheon\\Drupal\\": "./src/"
+        }
+    },
+    "require": {
+        "digitalpolygon/polymer-drupal": "^0@alpha"
+    }
+}

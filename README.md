@@ -1,1 +1,1 @@
-# polymer-pantheon-drupal
+# Polymer integration with Pantheon and Drupal
