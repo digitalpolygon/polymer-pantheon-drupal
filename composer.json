@@ -22,11 +22,28 @@
     "require": {
         "digitalpolygon/polymer-drupal": "0.x-dev"
     },
+    "require-dev": {
+        "php-parallel-lint/php-parallel-lint": "^1.4",
+        "phpro/grumphp-shim": "^2.5",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^1.11",
+        "squizlabs/php_codesniffer": "^3"
+    },
     "config": {
         "allow-plugins": {
             "digitalpolygon/polymer": true,
             "digitalpolygon/drupal-upgrade-plugin": true,
             "phpro/grumphp-shim": true
         }
+    },
+    "scripts": {
+        "lint": "find src test/src -name '*.php' -print0 | xargs -0 -n1 -P4 -- php -l",
+        "cs": "phpcs",
+        "sa": "phpstan analyse -v -c phpstan.neon",
+        "validations": [
+            "@lint",
+            "@cs",
+            "@sa"
+        ]
     }
 }
