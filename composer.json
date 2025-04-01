@@ -19,8 +19,5 @@
         "psr-4": {
             "DigitalPolygon\\PolymerPantheon\\Drupal\\": "./src/"
         }
-    },
-    "require": {
-        "digitalpolygon/polymer-drupal": "^0@alpha"
     }
 }
