@@ -33,6 +33,7 @@
         "allow-plugins": {
             "digitalpolygon/polymer": true,
             "digitalpolygon/drupal-upgrade-plugin": true,
+            "phpstan/extension-installer": true,
             "phpro/grumphp-shim": true
         }
     },
