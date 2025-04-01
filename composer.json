@@ -1,7 +1,6 @@
 {
     "name": "digitalpolygon/polymer-pantheon-drupal",
     "description": "Helpful scripts and tools for integrating Drupal with Pantheon.",
-    "version": "1.0.0",
     "authors":[
         {
             "name": "Digital Polygon Engineering",
