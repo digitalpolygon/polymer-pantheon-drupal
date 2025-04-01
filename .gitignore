@@ -1,1 +1,13 @@
+# IDE and editor ignore
+.idea/
+
+# Composer ignore
 composer.lock
+vendor/
+
+# Documentation ignore
+docs_site/
+mkdocs.yml
+
+# Other ignore
+polymer/
