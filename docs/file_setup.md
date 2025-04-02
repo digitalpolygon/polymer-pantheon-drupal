@@ -12,9 +12,10 @@ The following files will be (relative to repository root) created or modified:
 
 ## Quicksilver
 
-The `pantheon:quicksilver-scripts:inject-hooks` command will inject Drupal
-deployment workflow scripts into the project's `pantheon.yml` file. The steps
-are the equivalent of running `drush deploy`.
+The `pantheon:quicksilver-scripts:inject-hooks` (possibly run as part of
+`pantheon:files:setup:drupal`) command will inject Drupal deployment workflow
+scripts into the project's `pantheon.yml` file. The steps are the equivalent of
+running `drush deploy`.
 
 The commands are broken out individually because Quicksilver script execution
 times out after 2 minutes. Instead of having a single command that can time out
