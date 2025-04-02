@@ -1,0 +1,11 @@
+'*':
+  host: appserver.${env-name}.#site-id#.drush.in
+  paths:
+    files: files
+    private: files/private
+  uri: ${env-name}-#site-name#.pantheonsite.io
+  user: ${env-name}.#site-id#
+  ssh:
+    options: '-p 2222 -o "AddressFamily inet"'
+    tty: false
+
