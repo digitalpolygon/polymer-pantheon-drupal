@@ -72,4 +72,4 @@ nav:
   - Development: development.md
   - Use:
       - Workflows: workflows.md
-      - Pantheon Files and Quicksilver: files_setup.md
+      - Pantheon Files and Quicksilver: file_setup.md
