@@ -206,6 +206,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_files_generate-drush-site-yaml/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_files_setup_drupal/</loc>
          <lastmod>2025-04-02</lastmod>
          <changefreq>daily</changefreq>
