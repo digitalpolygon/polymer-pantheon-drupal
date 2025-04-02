@@ -10,8 +10,7 @@ use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
 
 class WorkflowCommands extends TaskBase
 {
-
-  use WorkflowHelperTrait;
+    use WorkflowHelperTrait;
 
   /**
    * Generate Pantheon workflows for the specified platform.
@@ -24,10 +23,10 @@ class WorkflowCommands extends TaskBase
    * @return int
    *   The exit code of the command.
    */
-  #[Command(name: 'pantheon:workflow:generate', aliases: ['pwg'])]
-  #[Argument(name: 'platform', description: 'The platform to generate workflows for.')]
-  public function generateWorkflows(ConsoleIO $io, string $platform): int
-  {
-    return $this->generateWorkflowFilesFromExtensionAndConfigKey('polymer_pantheon_drupal', 'pantheon.workflow.files', $platform);
-  }
+    #[Command(name: 'pantheon:workflow:generate', aliases: ['pwg'])]
+    #[Argument(name: 'platform', description: 'The platform to generate workflows for.')]
+    public function generateWorkflows(ConsoleIO $io, string $platform): int
+    {
+        return $this->generateWorkflowFilesFromExtensionAndConfigKey('polymer_pantheon_drupal', 'pantheon.workflow.files', $platform);
+    }
 }
