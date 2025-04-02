@@ -14,7 +14,3 @@
  else {
    echo "Drush command executed successfully.\n";
  }
-
-
-
-
