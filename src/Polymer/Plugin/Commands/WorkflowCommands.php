@@ -8,7 +8,7 @@ use Robo\Symfony\ConsoleIO;
 use Consolidation\AnnotatedCommand\Attributes\Command;
 use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
 
-class WorkflowCommands extends TaskBase
+final class WorkflowCommands extends TaskBase
 {
     use WorkflowHelperTrait;
 
