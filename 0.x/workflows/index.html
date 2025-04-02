@@ -12,28 +12,28 @@
         <meta name="author" content="Les Peabody">
       
       
-        <link rel="canonical" href="https://digitalpolygon.github.io/polymer-drupal/latest/latest/commands/pantheon_workflows_generate_drupal/">
+        <link rel="canonical" href="https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/workflows/">
       
       
-        <link rel="prev" href="../mk_docs/">
+        <link rel="prev" href="../development/">
       
       
-        <link rel="next" href="../polymer_init/">
+        <link rel="next" href="../commands/all/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
     
     
       
-        <title>pantheon:workflows:generate:drupal - Polymer Pantheon Drupal</title>
+        <title>Workflows - Polymer Pantheon Drupal</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pantheonworkflowsgeneratedrupal" class="md-skip">
+        <a href="#workflows" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Polymer Pantheon Drupal" class="md-header__button md-logo" aria-label="Polymer Pantheon Drupal" data-md-component="logo">
+    <a href=".." title="Polymer Pantheon Drupal" class="md-header__button md-logo" aria-label="Polymer Pantheon Drupal" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              pantheon:workflows:generate:drupal
+              Workflows
             
           </span>
         </div>
@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
-    digitalpolygon/polymer-drupal
+    digitalpolygon/polymer-pantheon-drupal
   </div>
 </a>
       </div>
@@ -221,7 +221,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
     
@@ -238,7 +238,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../development/" class="md-tabs__link">
+      <a href="../development/" class="md-tabs__link">
         
   
     
@@ -258,16 +258,32 @@
   
     
     
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../all/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../commands/all/" class="md-tabs__link">
           
   
   Commands
@@ -311,7 +327,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Polymer Pantheon Drupal" class="md-nav__button md-logo" aria-label="Polymer Pantheon Drupal" data-md-component="logo">
+    <a href=".." title="Polymer Pantheon Drupal" class="md-nav__button md-logo" aria-label="Polymer Pantheon Drupal" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -327,7 +343,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
-    digitalpolygon/polymer-drupal
+    digitalpolygon/polymer-pantheon-drupal
   </div>
 </a>
     </div>
@@ -341,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -361,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/" class="md-nav__link">
+      <a href="../development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -403,7 +419,7 @@
             
   
   <span class="md-ellipsis">
-    Commands
+    Use
   </span>
   
 
@@ -413,196 +429,9 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Commands
+            Use
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    _global
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            _global
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../all/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    all
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../completion/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    completion
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../composer_validate_security/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    composer:validate:security
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../help/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    help
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../internal_drupal_install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    internal:drupal:install
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../list/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    list
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_docs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    mk:docs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -624,7 +453,7 @@
           
   
   <span class="md-ellipsis">
-    pantheon:workflows:generate:drupal
+    Workflows
   </span>
   
 
@@ -635,7 +464,7 @@
         
   
   <span class="md-ellipsis">
-    pantheon:workflows:generate:drupal
+    Workflows
   </span>
   
 
@@ -657,11 +486,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#global-options" class="md-nav__link">
+  <a href="#github-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      Global Options
+      GitHub Actions
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pantheon-pushyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      pantheon-push.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pantheon-push-devyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      pantheon-push-dev.yml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -674,6 +527,89 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    _global
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            _global
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -681,7 +617,175 @@
   
   
     <li class="md-nav__item">
-      <a href="../polymer_init/" class="md-nav__link">
+      <a href="../commands/all/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    all
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/completion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    completion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/composer_validate_security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    composer:validate:security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    help
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/internal_drupal_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    internal:drupal:install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/mk_docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mk:docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/pantheon_workflow_generate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pantheon:workflow:generate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/polymer_init/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -702,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../source_build_copy/" class="md-nav__link">
+      <a href="../commands/source_build_copy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -741,10 +845,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -755,8 +859,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             artifact
           </label>
@@ -769,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../artifact_build_prepare/" class="md-nav__link">
+      <a href="../commands/artifact_build_prepare/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -790,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../artifact_build_sanitize/" class="md-nav__link">
+      <a href="../commands/artifact_build_sanitize/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -811,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../artifact_compile/" class="md-nav__link">
+      <a href="../commands/artifact_compile/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -832,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../artifact_composer_install/" class="md-nav__link">
+      <a href="../commands/artifact_composer_install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -853,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../artifact_deploy/" class="md-nav__link">
+      <a href="../commands/artifact_deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,10 +996,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -906,8 +1010,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             build
           </label>
@@ -920,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../build/" class="md-nav__link">
+      <a href="../commands/build/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -941,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../build_assets/" class="md-nav__link">
+      <a href="../commands/build_assets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../build_reqs/" class="md-nav__link">
+      <a href="../commands/build_reqs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1001,10 +1105,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1015,8 +1119,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             drupal
           </label>
@@ -1029,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_config_import/" class="md-nav__link">
+      <a href="../commands/drupal_config_import/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1050,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_deploy_hook/" class="md-nav__link">
+      <a href="../commands/drupal_deploy_hook/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1071,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_multisite_create/" class="md-nav__link">
+      <a href="../commands/drupal_multisite_create/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1092,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_multisite_update-all/" class="md-nav__link">
+      <a href="../commands/drupal_multisite_update-all/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1113,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_setup_ddev/" class="md-nav__link">
+      <a href="../commands/drupal_setup_ddev/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1134,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_setup_site/" class="md-nav__link">
+      <a href="../commands/drupal_setup_site/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1155,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_setup_site_all/" class="md-nav__link">
+      <a href="../commands/drupal_setup_site_all/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1176,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_setup_site_files/" class="md-nav__link">
+      <a href="../commands/drupal_setup_site_files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1197,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_install/" class="md-nav__link">
+      <a href="../commands/drupal_site_install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1218,7 +1322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_sync/" class="md-nav__link">
+      <a href="../commands/drupal_site_sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1239,7 +1343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_sync_all-sites/" class="md-nav__link">
+      <a href="../commands/drupal_site_sync_all-sites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1260,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_sync_database/" class="md-nav__link">
+      <a href="../commands/drupal_site_sync_database/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1281,7 +1385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_sync_db_all-sites/" class="md-nav__link">
+      <a href="../commands/drupal_site_sync_db_all-sites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1302,7 +1406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_sync_files/" class="md-nav__link">
+      <a href="../commands/drupal_site_sync_files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1323,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_site_sync_private-files/" class="md-nav__link">
+      <a href="../commands/drupal_site_sync_private-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1344,7 +1448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_update/" class="md-nav__link">
+      <a href="../commands/drupal_update/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1365,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_upgrade/" class="md-nav__link">
+      <a href="../commands/drupal_upgrade/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1386,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_upgrade_composer/" class="md-nav__link">
+      <a href="../commands/drupal_upgrade_composer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1407,7 +1511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_upgrade_export/" class="md-nav__link">
+      <a href="../commands/drupal_upgrade_export/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1428,7 +1532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../drupal_workflow_generate/" class="md-nav__link">
+      <a href="../commands/drupal_workflow_generate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1483,33 +1587,59 @@
 
 
   
+    
+  
   
 
 
-<h1 id="pantheonworkflowsgeneratedrupal">pantheon:workflows:generate:drupal<a class="headerlink" href="#pantheonworkflowsgeneratedrupal" title="Permanent link">&para;</a></h1>
-<p>Generate Pantheon GitHub workflow.</p>
-<h4 id="global-options">Global Options<a class="headerlink" href="#global-options" title="Permanent link">&para;</a></h4>
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 2, 2025 01:48:17">April 2, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+<h1 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h1>
+<h2 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
+<p>To install the workflows, run the following command:</p>
+<div class="highlight"><pre><span></span><code>polymer<span class="w"> </span>pantheon:workflow:generate<span class="w"> </span>github
+</code></pre></div>
+<p>Provided by this extension are two workflows:</p>
 <ul>
-<li><strong>-h, --help</strong>. Display help for the given command. When no command is given display help for the <em>list</em> command</li>
-<li><strong>-q, --quiet</strong>. Do not output any message</li>
-<li><strong>-v|vv|vvv, --verbose</strong>. Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug</li>
-<li><strong>-V, --version</strong>. Display this application version</li>
-<li><strong>--ansi</strong>. Force (or disable --no-ansi) ANSI output</li>
-<li><strong>-n, --no-interaction</strong>. Do not ask any interactive question</li>
-<li><strong>--simulate</strong>. Run in simulated mode (show what would have happened).</li>
-<li><strong>--progress-delay=PROGRESS-DELAY</strong>. Number of seconds before progress bar is displayed in long-running task collections. Default: 2s.</li>
-<li><strong>-D, --define=DEFINE</strong>. Define a configuration item value.</li>
-<li><strong>--environment=ENVIRONMENT</strong>. Set the environment to load config from polymer/[env].polymer.yml file.</li>
-<li><strong>--site=SITE</strong>. The multisite to execute this command against.</li>
+<li>pantheon-push.yml</li>
+<li>pantheon-push-dev.yml</li>
 </ul>
-<div class="admonition hint">
-<p class="admonition-title">Legend</p>
+<h3 id="pantheon-pushyml"><code>pantheon-push.yml</code><a class="headerlink" href="#pantheon-pushyml" title="Permanent link">&para;</a></h3>
+<p>This workflow is meant to be invoked by other workflows.</p>
+<p>It requires two inputs:</p>
 <ul>
-<li>An argument or option with square brackets is optional.</li>
-<li>Any default value is listed at end of arg/option description.</li>
-<li>An ellipsis indicates that an argument accepts multiple values separated by a space.</li>
+<li><code>artifact</code>: The configured artifact ID to compile.</li>
+<li><code>branch</code>: The branch pushed to Pantheon, with the compiled artifact.</li>
 </ul>
+<p>It requires two secrets:</p>
+<ul>
+<li><code>SSH_KEY</code>: The GitHub Actions secret which contains an SSH private key that can be used to push to Pantheon.</li>
+<li><code>KNOWN_HOSTS</code>: The GitHub Actions secret which contains the known hosts file for the Pantheon repository.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The workflow may need alterations to satisfy all build requirements for the artifact, such as installing <code>npm</code> 
+or <code>yarn</code> at specific versions.</p>
 </div>
+<h3 id="pantheon-push-devyml"><code>pantheon-push-dev.yml</code><a class="headerlink" href="#pantheon-push-devyml" title="Permanent link">&para;</a></h3>
+<p>This workflow is meant to be invoked by the <code>pantheon-push.yml</code> workflow.</p>
+<p>By default, this workflow will run on pushes to the <code>main</code> branch of the source
+repository and will push the compiled artifact to the <code>master</code> branch on
+Pantheon, which will deploy the artifact to the <code>dev</code> environment.</p>
 
 
 
@@ -1548,10 +1678,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
       
     
   </body>
