@@ -1,0 +1,17 @@
+name: Deploy to Pantheon Dev
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-dev:
+    name: Build and push
+    uses: ./.github/workflows/pantheon-push.yml
+    with:
+      pantheon-branch: master
+      artifact: main
+    secrets:
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}

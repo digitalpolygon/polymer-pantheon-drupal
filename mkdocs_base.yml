@@ -70,3 +70,5 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Development: development.md
+  - Use:
+      - Workflows: workflows.md

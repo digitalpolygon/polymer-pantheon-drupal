@@ -1,2 +1,7 @@
 pantheon:
   git-repo-regex: '/^ssh:\/\/codeserver\.dev\.[a-f0-9\-]+@codeserver\.dev\.[a-f0-9\-]+\.drush\.in:2222\/~\/repository\.git$/'
+  workflow:
+    files:
+      github:
+        - pantheon-push.yml
+        - pantheon-push-dev.yml

@@ -1,0 +1,43 @@
+on:
+  workflow_call:
+    inputs:
+      pantheon-branch:
+        required: true
+        type: string
+      artifact:
+        required: true
+        type: string
+    secrets:
+      SSH_KEY:
+          required: true
+      KNOWN_HOSTS:
+          required: true
+
+jobs:
+  push:
+    name: Push artifact ${{ inputs.artifact }} to ${{ inputs.pantheon-branch }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Git Config
+        uses: qoomon/actions--setup-git@v1.1.1
+      - name: Setup PHP Action
+        uses: shivammathur/setup-php@2.32.0
+        with:
+          php-version: '8.3'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction
+      - name: Push to Pantheon
+        run: |
+          vendor/bin/polymer artifact:deploy "${{ inputs.artifact }}" --no-interaction -vvv --branch="${{ inputs.pantheon-branch }}" --commit-msg="Generated artifact from SHA $GITHUB_SHA AND GitHub Actions run ID $GITHUB_RUN_ID."
