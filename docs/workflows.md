@@ -29,9 +29,8 @@ It requires two secrets:
 
 !!! note
 
-    The workflow may require alterations required to satisfy all build
-    requirements for the artifact, such as installing `npm` or `yarn` at
-    specific versions.
+    The workflow may need alterations to satisfy all build requirements for the artifact, such as installing `npm` 
+    or `yarn` at specific versions.
 
 ### `pantheon-push-dev.yml`
 
