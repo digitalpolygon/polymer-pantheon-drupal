@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/file_setup/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/workflows/</loc>
          <lastmod>2025-04-02</lastmod>
          <changefreq>daily</changefreq>
@@ -187,6 +192,26 @@
     </url>
     <url>
          <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/mk_docs/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_files_copy-pantheon-yml/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_files_copy-quicksilver-scripts/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_files_setup_drupal/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_quicksilver-scripts_inject-hooks/</loc>
          <lastmod>2025-04-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
