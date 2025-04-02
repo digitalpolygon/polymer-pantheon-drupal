@@ -13,6 +13,7 @@ final class PantheonFileCommands extends TaskBase
     public const INJECT_QUICKSILVER_HOOKS_COMMAND = 'pantheon:quicksilver-scripts:inject-hooks';
     public const COPY_QUICKSILVER_SCRIPTS_COMMAND = 'pantheon:files:copy-quicksilver-scripts';
     public const PANTHEON_FILES_SETUP_COMMAND     = 'pantheon:files:setup:drupal';
+    public const CREATE_DRUSH_SITE_YAML_COMMAND   = 'pantheon:files:generate-drush-site-yaml';
 
     #[Command(name: self::INJECT_QUICKSILVER_HOOKS_COMMAND)]
     public function injectQuicksilverHooks(ConsoleIO $io): int
@@ -68,6 +69,7 @@ final class PantheonFileCommands extends TaskBase
         $pantheonYmlDest = $repoRoot . '/pantheon.yml';
         $commands = [
             self::COPY_QUICKSILVER_SCRIPTS_COMMAND,
+            self::CREATE_DRUSH_SITE_YAML_COMMAND,
         ];
 
         if (file_exists($pantheonYmlDest)) {
@@ -80,6 +82,30 @@ final class PantheonFileCommands extends TaskBase
             $this->commandInvoker->invokeCommand($io->input(), $command);
         }
 
+        return 0;
+    }
+
+    #[Command(name: self::CREATE_DRUSH_SITE_YAML_COMMAND)]
+    public function generateDrushSiteYaml(ConsoleIO $io): int
+    {
+        $extensionRoot = $this->getConfigValue('extension.polymer_pantheon_drupal.root');
+        $repoRoot = $this->getConfigValue('repo.root');
+        $drushSiteTemplateFile = $extensionRoot . '/pantheon_files/drush.site.yml';
+        $site_id = $this->getConfigValue('pantheon.site-info.id');
+        $site_name = $this->getConfigValue('pantheon.site-info.name');
+        if (is_string($site_name) && is_string($site_id)) {
+            $destinationFile = $repoRoot . '/drush/sites/' . $site_name . '.site.yml';
+            $result = $this->_mkdir(dirname($destinationFile));
+            if ($result->getExitCode() === 0) {
+                $content = file_get_contents($drushSiteTemplateFile);
+                $content = str_replace('#site-id#', $site_id, $content);
+                $content = str_replace('#site-name#', $site_name, $content);
+                file_put_contents($destinationFile, $content);
+                $io->say('<info>Wrote ' . $destinationFile . '</info>');
+            }
+        } else {
+            $this->logger?->warning("Either pantheon.site-info.id or pantheon.site-info.name is not set. Cannot write Drush site file.");
+        }
         return 0;
     }
 }
