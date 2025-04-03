@@ -14,7 +14,7 @@ use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
 class PantheonArtifactHook extends TaskBase
 {
     protected const PANTHEON_GIT_URL_REGEX = '/^ssh:\/\/codeserver\.dev\.[a-f0-9\-]+@codeserver\.dev\.[a-f0-9\-]+\.drush\.in:2222\/~\/repository\.git$/';
-    protected const MULTIDEV_NAME_REGEX = '/^(?!.*-.*-)[a-z\-]{1,11}$/';
+    protected const MULTIDEV_NAME_REGEX = '/^(?!.*-.*-)[a-z0-9\-]{1,11}$/';
 
     #[Hook(type: HookManager::OPTION_HOOK, target: DeployCommand::ARTIFACT_DEPLOY_COMMAND)]
     public function addPantheonOptions(AnnotatedCommand $command, AnnotationData $annotationData): void
