@@ -3,7 +3,7 @@ name: Deploy to Pantheon Dev
 on:
   push:
     branches:
-      - main
+      - #default-branch#
 
 jobs:
   deploy-dev:
@@ -11,7 +11,7 @@ jobs:
     uses: ./.github/workflows/pantheon-push.yml
     with:
       pantheon-branch: master
-      artifact: main
+      artifact: '#default-artifact#'
     secrets:
       SSH_KEY: ${{ secrets.SSH_KEY }}
       KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}

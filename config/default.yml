@@ -5,9 +5,7 @@ pantheon:
     name: ~
   terminus:
     machine-token: ~
-    command: terminus
-  workflow:
-    files:
-      github:
-        - pantheon-push.yml
-        - pantheon-push-dev.yml
+    bin: terminus
+    default-site-name: ${pantheon.site-info.name}
+  multidev:
+    default-source-env: dev
