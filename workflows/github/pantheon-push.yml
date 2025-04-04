@@ -27,7 +27,7 @@ jobs:
       - name: Setup PHP Action
         uses: shivammathur/setup-php@2.32.0
         with:
-          php-version: '8.3'
+          php-version: '#php-version#'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install SSH key

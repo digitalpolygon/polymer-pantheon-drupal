@@ -1,0 +1,34 @@
+name: Cleanup PR Multidev environment
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - #default-branch#
+
+jobs:
+  delete-multidev:
+    name: Delete multidev
+    runs-on: ubuntu-latest
+    concurrency:
+      group: multidev-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    env:
+      MULTIDEV_NAME: pr-${{ github.event.pull_request.number }}
+      PANTHEON_SITE_NAME: #pantheon-site-name#
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "#php-version#"
+      - name: Install Terminus
+        uses: pantheon-systems/terminus-github-actions@v1
+        with:
+          pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+      - name: Delete PR multidev environment
+        run: |
+          if terminus multidev:delete "$PANTHEON_SITE_NAME.$MULTIDEV_NAME" --delete-branch --yes --no-interaction; then
+            echo "Multidev deleted successfully."
+          else
+            echo "Multidev does not exist, skipping."
+          fi

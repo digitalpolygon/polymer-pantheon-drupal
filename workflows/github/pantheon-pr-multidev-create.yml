@@ -1,0 +1,49 @@
+name: Deploy PR to Multidev
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - #default-branch#
+
+jobs:
+  deploy-multidev:
+    name: Build and push
+    uses: ./.github/workflows/pantheon-push.yml
+    concurrency:
+      group: deploy-artifact-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    with:
+      pantheon-branch: pr-${{ github.event.pull_request.number }}
+      artifact: main
+    secrets:
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+  create-multidev:
+    name: Create multidev
+    runs-on: ubuntu-latest
+    needs: deploy-multidev
+    env:
+      TERMINUS_MACHINE_TOKEN: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+      MULTIDEV_NAME: pr-${{ github.event.pull_request.number }}
+      PANTHEON_SITE_NAME: #pantheon-site-name#
+      MULTIDEV_SOURCE_ENV: #default-multidev-source-env#
+    concurrency:
+      group: multidev-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "#php-version#"
+      - name: Install Terminus
+        uses: pantheon-systems/terminus-github-actions@v1
+        with:
+          pantheon-machine-token: ${{ env.TERMINUS_MACHINE_TOKEN }}
+      - name: Create PR multidev environment
+        run: |
+          if terminus multidev:create "$PANTHEON_SITE_NAME.$MULTIDEV_SOURCE_ENV" "$MULTIDEV_NAME" --yes --no-interaction; then
+            echo "Multidev created successfully."
+          else
+            echo "Multidev already exists, or there was some other error."
+          fi
