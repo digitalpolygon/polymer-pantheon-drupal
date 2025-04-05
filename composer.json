@@ -21,7 +21,7 @@
     },
     "require": {
         "digitalpolygon/polymer-drupal": "0.x-dev",
-        "pantheon-systems/drupal-integrations": "*"
+        "pantheon-systems/drupal-integrations": "* !=11.0.0"
     },
     "require-dev": {
         "php-parallel-lint/php-parallel-lint": "^1.4",
