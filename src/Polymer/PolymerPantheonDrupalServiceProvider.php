@@ -7,6 +7,7 @@ use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflow
 use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPrMultidevDelete;
 use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPush;
 use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPushDev;
+use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Services\EventSubscriber\DrupalEventsSubscriber;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 
@@ -19,6 +20,10 @@ final class PolymerPantheonDrupalServiceProvider extends AbstractServiceProvider
    */
     public function boot(): void
     {
+        $container = $this->getContainer();
+        $container->extend('eventDispatcher')
+          ->addMethodCall('addSubscriber', ['pantheonDrupalEventsSubscriber']);
+
         $this->addTemplate(
             PantheonPush::id(),
             PantheonPush::collections(),
@@ -41,20 +46,24 @@ final class PolymerPantheonDrupalServiceProvider extends AbstractServiceProvider
         );
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function provides(string $id): bool
     {
-        $provides = [];
+        $provides = [
+          'pantheonDrupalEventsSubscriber',
+        ];
         return in_array($id, $provides);
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function register(): void
     {
+        $container = $this->getContainer();
+        $container->addShared('pantheonDrupalEventsSubscriber', DrupalEventsSubscriber::class);
     }
 
     protected function addTemplate(string $id, array $collections, string $concrete): void
