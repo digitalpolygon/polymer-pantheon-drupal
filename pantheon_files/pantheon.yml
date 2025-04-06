@@ -7,51 +7,11 @@ database:
 build_step: false
 # See https://pantheon.io/docs/pantheon-yml/#enforce-https--hsts for valid values.
 enforce_https: transitional
-php_version: 8.2
+php_version: #php-version#
 web_docroot: true
 protected_web_paths:
   - /private/
   - /sites/default/files/private/
   - /sites/default/files/config/
 
-workflows:
-  sync_code:
-    after:
-      - type: webphp
-        description: Rebuild cache
-        script: private/scripts/cache_rebuild.php
-      - type: webphp
-        description: Execute database updates
-        script: private/scripts/database_updates.php
-
-      - type: webphp
-        description: Import configuration
-        script: private/scripts/drush_config_import.php
-
-      - type: webphp
-        description: Import configuration
-        script: private/scripts/drush_config_import.php
-
-      - type: webphp
-        description: Run Drush deploy hooks
-        script: private/scripts/drush_deploy_hook.php
-  deploy:
-    after:
-      - type: webphp
-        description: Rebuild cache
-        script: private/scripts/cache_rebuild.php
-      - type: webphp
-        description: Execute database updates
-        script: private/scripts/database_updates.php
-
-      - type: webphp
-        description: Import configuration
-        script: private/scripts/drush_config_import.php
-
-      - type: webphp
-        description: Import configuration
-        script: private/scripts/drush_config_import.php
-
-      - type: webphp
-        description: Run Drush deploy hooks
-        script: private/scripts/drush_deploy_hook.php
+workflows: {  }
