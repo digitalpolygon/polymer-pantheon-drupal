@@ -3,109 +3,156 @@
 namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Commands;
 
 use Consolidation\AnnotatedCommand\Attributes\Command;
+use Consolidation\AnnotatedCommand\Attributes\Hook;
+use Consolidation\AnnotatedCommand\Attributes\HookSelector;
+use Consolidation\AnnotatedCommand\Attributes\Option;
+use Consolidation\AnnotatedCommand\CommandData;
+use Consolidation\AnnotatedCommand\Hooks\HookManager;
+use DigitalPolygon\Polymer\Robo\Commands\Template\TemplateCommand;
 use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
+use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Exception\TerminusPluginNotInstalledException;
+use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\DrushSiteYaml;
+use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\PantheonYaml;
+use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\QuicksilverYaml;
+use Robo\Contract\VerbosityThresholdInterface;
 use Robo\Symfony\ConsoleIO;
-use Symfony\Component\Yaml\Yaml;
 
 final class PantheonFileCommands extends TaskBase
 {
-    public const COPY_PANTHEON_YML_COMMAND        = 'pantheon:files:copy-pantheon-yml';
-    public const INJECT_QUICKSILVER_HOOKS_COMMAND = 'pantheon:quicksilver-scripts:inject-hooks';
-    public const COPY_QUICKSILVER_SCRIPTS_COMMAND = 'pantheon:files:copy-quicksilver-scripts';
-    public const PANTHEON_FILES_SETUP_COMMAND     = 'pantheon:files:setup:drupal';
-    public const CREATE_DRUSH_SITE_YAML_COMMAND   = 'pantheon:files:generate-drush-site-yaml';
+    public const COMMAND_COPY_PANTHEON_FILE            = 'pantheon:files:copy-pantheon-yml';
+    public const COMMAND_TERMINUS_PLUGINS              = 'pantheon:terminus:plugins:install';
+    public const COMMAND_QUICKSILVER_INSTALL_CONFIG    = 'pantheon:quicksilver:install-configuration';
+    public const COMMAND_QUICKSILVER_INSTALL_PROFILES  = 'pantheon:quicksilver:install-profile';
+    public const COMMAND_FILES_SETUP                   = 'pantheon:files:setup:drupal';
+    public const COMMAND_CREATE_DRUSH_YAML             = 'pantheon:files:generate-drush-site-yaml';
+    public const VALIDATE_SELECTOR_TERMINUS_PLUGIN     = 'validateTerminusPluginExists';
+    public const TERMINUS_PLUGIN_QUICKSILVER_ID        = 'terminus-quicksilver-plugin';
+    public const TERMINUS_PLUGIN_BUILD_TOOLS_ID        = 'terminus-build-tools-plugin';
 
-    #[Command(name: self::INJECT_QUICKSILVER_HOOKS_COMMAND)]
-    public function injectQuicksilverHooks(ConsoleIO $io): int
+    #[Command(name: self::COMMAND_QUICKSILVER_INSTALL_CONFIG)]
+    public function installQuicksilverConfiguration(ConsoleIO $io): int
     {
-        $extensionRoot = $this->getConfigValue('extension.polymer_pantheon_drupal.root');
-        $repoRoot = $this->getConfigValue('repo.root');
-        $pantheonYmlSrc = $extensionRoot . '/pantheon_files/pantheon.yml';
-        $pantheonYmlDest = $repoRoot . '/pantheon.yml';
-        if (!file_exists($pantheonYmlDest)) {
-            $this->commandInvoker->invokeCommand($io->input(), self::COPY_PANTHEON_YML_COMMAND);
-        } else {
-            $pantheonYmlSrcData = Yaml::parseFile($pantheonYmlSrc);
-            $pantheonYmlDestData = Yaml::parseFile($pantheonYmlDest);
-            $sourceWorkflows = ['workflows' => $pantheonYmlSrcData['workflows']];
-            $mergedDestinationData = array_merge_recursive($pantheonYmlDestData, $sourceWorkflows);
-            $mergedDestinationYaml = Yaml::dump($mergedDestinationData, 5, 2);
-            file_put_contents($pantheonYmlDest, $mergedDestinationYaml);
+        return $this->commandInvoker->invokeCommand($io->input(), TemplateCommand::TEMPLATE_GENERATE_FILE_COMMAND, [
+            'template' => QuicksilverYaml::id(),
+        ]);
+    }
+
+    #[Command(name: self::COMMAND_CREATE_DRUSH_YAML)]
+    public function generateDrushSiteYaml(ConsoleIO $io): int
+    {
+        return $this->commandInvoker->invokeCommand($io->input(), TemplateCommand::TEMPLATE_GENERATE_FILE_COMMAND, [
+            'template' => DrushSiteYaml::id(),
+        ]);
+    }
+
+    #[Command(name: self::COMMAND_COPY_PANTHEON_FILE)]
+    #[Option(name: 'force', description: 'Force copy of pantheon.yml file')]
+    public function copyPantheonSettingsFile(ConsoleIO $io, bool $force = false): int
+    {
+        return $this->commandInvoker->invokeCommand($io->input(), TemplateCommand::TEMPLATE_GENERATE_FILE_COMMAND, [
+            'template' => PantheonYaml::id(),
+            '--force' => $force,
+        ]);
+    }
+
+    #[Command(name: self::COMMAND_QUICKSILVER_INSTALL_PROFILES)]
+    #[HookSelector(name: self::VALIDATE_SELECTOR_TERMINUS_PLUGIN, value: self::TERMINUS_PLUGIN_QUICKSILVER_ID)]
+    public function installQuicksilverProfiles(ConsoleIO $io): int
+    {
+        $profiles = $this->getConfigValue('pantheon.quicksilver.install-profiles');
+        $terminusBin = $this->getConfigValue('pantheon.terminus.bin', 'terminus');
+        $task = $this->taskExecStack()
+            ->printOutput(false)
+            ->printMetadata(false)
+            ->stopOnFail()
+            ->interactive($io->input()->isInteractive());
+        foreach ($profiles as $profile) {
+            $command = "$terminusBin quicksilver:profile $profile";
+            if (!$io->input()->isInteractive()) {
+                $command .= ' --no-interaction';
+            }
+            $task->exec($command);
         }
+        $result = $task->run();
         return 0;
     }
 
-    #[Command(name: self::COPY_QUICKSILVER_SCRIPTS_COMMAND)]
-    public function copyQuicksilverHooks(ConsoleIO $io): int
+    #[Command(name: self::COMMAND_TERMINUS_PLUGINS)]
+    public function installTerminusPlugins(ConsoleIO $io): int
     {
-        $extensionRoot = $this->getConfigValue('extension.polymer_pantheon_drupal.root');
-        $docroot = $this->getConfigValue('docroot', 'web');
-        $quicksilverFilesSourceDir = $extensionRoot . '/pantheon_files/quicksilver';
-        $quicksilverFilesDestDir = $docroot . '/private/scripts';
-        $result = $this->taskFilesystemStack()
-          ->mkdir($quicksilverFilesDestDir)
-          ->mirror($quicksilverFilesSourceDir, $quicksilverFilesDestDir)
-          ->run();
+        $terminusPlugins = $this->getConfigValue('pantheon.terminus.plugins');
+        $terminusBin = $this->getConfigValue('pantheon.terminus.bin', 'terminus');
+        $task = $this->taskExecStack()
+            ->printOutput(false)
+            ->printMetadata(false)
+            ->stopOnFail()
+            ->interactive($io->input()->isInteractive());
+        foreach ($terminusPlugins as $value) {
+            if (is_array($value)) {
+                if (empty($value['name']) || !is_string($value['name'])) {
+                    throw new \LogicException("Plugin cannot be installed without a name specified.");
+                }
+                $plugin = $value['name'];
+                if (!empty($value['version'])) {
+                    if (!is_string($value['version'])) {
+                        throw new \LogicException("Plugin version must be a string.");
+                    } else {
+                        $plugin .= ':' . $value['version'];
+                    }
+                }
+            } elseif (is_string($value)) {
+                $plugin = $value;
+            } else {
+                throw new \LogicException("Plugin must be a string or an array with keys: plugin, version (optional).");
+            }
+            $command = "$terminusBin self:plugin:install $plugin";
+            if (!$io->input()->isInteractive()) {
+                $command .= ' --no-interaction';
+            }
+            $task->exec($command);
+        }
+        $result = $task->run();
+        if ($result->getExitCode() !== 0) {
+            $this->logger?->error('Error installing Terminus plugins.');
+        }
         return $result->getExitCode();
     }
 
-    #[Command(name: self::COPY_PANTHEON_YML_COMMAND)]
-    public function copyPantheonYml(ConsoleIO $io): int
+    #[Hook(type: HookManager::ARGUMENT_VALIDATOR, selector: self::VALIDATE_SELECTOR_TERMINUS_PLUGIN)]
+    public function validateTerminusPluginsExists(CommandData $commandData): void
     {
-        $repoRoot = $this->getConfigValue('repo.root');
-        $extensionRoot = $this->getConfigValue('extension.polymer_pantheon_drupal.root');
-        $pantheonYmlDest = $repoRoot . '/pantheon.yml';
-        $pantheonYmlSrc = $extensionRoot . '/pantheon_files/pantheon.yml';
-        $result = $this->taskFilesystemStack()
-          ->copy($pantheonYmlSrc, $pantheonYmlDest)
-          ->run();
-        return $result->getExitCode();
+        $plugins = $commandData->annotationData()->getList(self::VALIDATE_SELECTOR_TERMINUS_PLUGIN);
+        $task = $this->taskExecStack()
+            ->printOutput(false)
+            ->printMetadata(false)
+            ->setVerbosityThreshold(VerbosityThresholdInterface::VERBOSITY_DEBUG)
+            ->stopOnFail()
+            ->interactive($this->input()->isInteractive());
+        foreach ($plugins as $plugin) {
+            $task->exec("terminus self:plugin:list | grep $plugin");
+        }
+        $result = $task->run();
+        if ($result->getExitCode() !== 0 && isset($plugin)) {
+            throw new TerminusPluginNotInstalledException($plugin);
+        }
     }
 
-    #[Command(name: self::PANTHEON_FILES_SETUP_COMMAND)]
+    #[Command(name: self::COMMAND_FILES_SETUP)]
     public function pantheonFilesSetup(ConsoleIO $io): int
     {
-        $repoRoot = $this->getConfigValue('repo.root');
-        $pantheonYmlDest = $repoRoot . '/pantheon.yml';
         $commands = [
-            self::COPY_QUICKSILVER_SCRIPTS_COMMAND,
-            self::CREATE_DRUSH_SITE_YAML_COMMAND,
+            self::COMMAND_CREATE_DRUSH_YAML,
+            self::COMMAND_COPY_PANTHEON_FILE,
+            self::COMMAND_QUICKSILVER_INSTALL_CONFIG,
+            self::COMMAND_TERMINUS_PLUGINS,
+            self::COMMAND_QUICKSILVER_INSTALL_PROFILES,
+            'drupal:setup:site:files',
         ];
-
-        if (file_exists($pantheonYmlDest)) {
-            $commands[] = self::INJECT_QUICKSILVER_HOOKS_COMMAND;
-        } else {
-            $commands[] = self::COPY_PANTHEON_YML_COMMAND;
-        }
 
         foreach ($commands as $command) {
             $this->commandInvoker->invokeCommand($io->input(), $command);
         }
 
-        return 0;
-    }
-
-    #[Command(name: self::CREATE_DRUSH_SITE_YAML_COMMAND)]
-    public function generateDrushSiteYaml(ConsoleIO $io): int
-    {
-        $extensionRoot = $this->getConfigValue('extension.polymer_pantheon_drupal.root');
-        $repoRoot = $this->getConfigValue('repo.root');
-        $drushSiteTemplateFile = $extensionRoot . '/pantheon_files/drush.site.yml';
-        $site_id = $this->getConfigValue('pantheon.site-info.id');
-        $site_name = $this->getConfigValue('pantheon.site-info.name');
-        if (is_string($site_name) && is_string($site_id)) {
-            $destinationFile = $repoRoot . '/drush/sites/' . $site_name . '.site.yml';
-            $result = $this->_mkdir(dirname($destinationFile));
-            if ($result->getExitCode() === 0) {
-                $content = file_get_contents($drushSiteTemplateFile);
-                $content = str_replace('#site-id#', $site_id, $content);
-                $content = str_replace('#site-name#', $site_name, $content);
-                file_put_contents($destinationFile, $content);
-                $io->say('<info>Wrote ' . $destinationFile . '</info>');
-            }
-        } else {
-            $this->logger?->warning("Either pantheon.site-info.id or pantheon.site-info.name is not set. Cannot write Drush site file.");
-        }
         return 0;
     }
 }

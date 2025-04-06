@@ -7,5 +7,26 @@ pantheon:
     machine-token: ~
     bin: terminus
     default-site-name: ${pantheon.site-info.name}
+    plugins:
+      - name: pantheon-systems/terminus-quicksilver-plugin
+        version: 1.x-dev
+  quicksilver:
+    default-profile: development
+    install-profiles:
+      - deployment
   multidev:
     default-source-env: dev
+  file-mappings:
+    pantheon-settings:
+      name: pantheon.yml
+      source: ${extension.polymer_pantheon_drupal.root}/pantheon_files/${pantheon.file-mappings.pantheon-settings.name}
+      destination: ${repo.root}/${pantheon.file-mappings.pantheon-settings.name}
+    drush-site:
+      name: drush.site.yml
+      site-name: ${pantheon.site-info.name}
+      source: ${extension.polymer_pantheon_drupal.root}/pantheon_files/${pantheon.file-mappings.drush-site.name}
+      destination: ${repo.root}/drush/sites/${pantheon.site-info.name}.site.yml
+    quicksilver-config:
+      name: quicksilver.yml
+      source: ${extension.polymer_pantheon_drupal.root}/pantheon_files/${pantheon.file-mappings.quicksilver-config.name}
+      destination: ${user.home}/.quicksilver/${pantheon.file-mappings.quicksilver-config.name}
