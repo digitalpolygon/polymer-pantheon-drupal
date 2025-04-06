@@ -4,8 +4,8 @@ namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template;
 
 use DigitalPolygon\Polymer\Robo\Template\Template;
 
-class QuicksilverYaml extends Template {
-
+class QuicksilverYaml extends Template
+{
     public static function id(): string
     {
         return 'quicksilver-config';
@@ -48,5 +48,4 @@ class QuicksilverYaml extends Template {
 
         throw new \RuntimeException('Cannot determine the home directory.');
     }
-
 }

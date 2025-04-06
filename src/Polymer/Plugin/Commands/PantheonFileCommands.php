@@ -87,8 +87,7 @@ final class PantheonFileCommands extends TaskBase
             ->printMetadata(false)
             ->stopOnFail()
             ->interactive($io->input()->isInteractive());
-        foreach ($terminusPlugins as $value)
-        {
+        foreach ($terminusPlugins as $value) {
             if (is_array($value)) {
                 if (empty($value['name']) || !is_string($value['name'])) {
                     throw new \LogicException("Plugin cannot be installed without a name specified.");
@@ -97,16 +96,13 @@ final class PantheonFileCommands extends TaskBase
                 if (!empty($value['version'])) {
                     if (!is_string($value['version'])) {
                         throw new \LogicException("Plugin version must be a string.");
-                    }
-                    else {
+                    } else {
                         $plugin .= ':' . $value['version'];
                     }
                 }
-            }
-            elseif (is_string($value)) {
+            } elseif (is_string($value)) {
                 $plugin = $value;
-            }
-            else {
+            } else {
                 throw new \LogicException("Plugin must be a string or an array with keys: plugin, version (optional).");
             }
             $command = "$terminusBin self:plugin:install $plugin";
@@ -123,7 +119,8 @@ final class PantheonFileCommands extends TaskBase
     }
 
     #[Hook(type: HookManager::ARGUMENT_VALIDATOR, selector: self::VALIDATE_SELECTOR_TERMINUS_PLUGIN)]
-    public function validateTerminusPluginsExists(CommandData $commandData): void {
+    public function validateTerminusPluginsExists(CommandData $commandData): void
+    {
         $plugins = $commandData->annotationData()->getList(self::VALIDATE_SELECTOR_TERMINUS_PLUGIN);
         $task = $this->taskExecStack()
             ->printOutput(false)
@@ -158,5 +155,4 @@ final class PantheonFileCommands extends TaskBase
 
         return 0;
     }
-
 }

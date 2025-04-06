@@ -5,8 +5,8 @@ namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template;
 use DigitalPolygon\Polymer\Robo\Template\Template;
 use DigitalPolygon\Polymer\Robo\Template\Token;
 
-class DrushSiteYaml extends Template {
-
+class DrushSiteYaml extends Template
+{
     public static function id(): string
     {
         return 'pantheon-drush-site';
