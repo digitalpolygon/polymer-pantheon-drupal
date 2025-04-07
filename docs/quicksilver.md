@@ -26,14 +26,16 @@ The following profile/webhook collections is configured by default in the Quicks
 With `drush_deploy_hooks`, Drush deployment hooks will be installed into your application and configured in
 pantheon.yml. It breaks the deployment process into 4 separate steps:
 
-- `drush cr`
 - `drush updb`
 - `drush cim`
+- `drush cr`
 - `drush deploy:hook`
 
-Why not just use `drush deploy`? Because a Quicksilver webhook script will time out after 2 minutes of operation. If we
-used `drush deploy` in a single script, the entire deployment would need to be completed in 2 minutes or less. By
-breaking `drush deploy` out into its 4 components, each step gets the maximum 2 minutes to complete.
+!!! tip
+
+    Why not just use `drush deploy`? Because a Quicksilver webhook script will time out after 2 minutes of operation. If we
+    used `drush deploy` in a single script, the entire deployment would need to be completed in 2 minutes or less. By
+    breaking `drush deploy` out into its 4 components, each step gets the maximum 2 minutes to complete.
 
 You can see all available webhook collections at:
 

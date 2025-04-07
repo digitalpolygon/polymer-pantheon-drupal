@@ -23,7 +23,7 @@ final class PantheonFileCommands extends TaskBase
     public const COMMAND_TERMINUS_PLUGINS              = 'pantheon:terminus:plugins:install';
     public const COMMAND_QUICKSILVER_INSTALL_CONFIG    = 'pantheon:quicksilver:install-configuration';
     public const COMMAND_QUICKSILVER_INSTALL_PROFILES  = 'pantheon:quicksilver:install-profile';
-    public const COMMAND_FILES_SETUP                   = 'pantheon:files:setup:drupal';
+    public const COMMAND_FILES_SETUP                   = 'pantheon:setup:drupal';
     public const COMMAND_CREATE_DRUSH_YAML             = 'pantheon:files:generate-drush-site-yaml';
     public const VALIDATE_SELECTOR_TERMINUS_PLUGIN     = 'validateTerminusPluginExists';
     public const TERMINUS_PLUGIN_QUICKSILVER_ID        = 'terminus-quicksilver-plugin';
@@ -182,6 +182,12 @@ final class PantheonFileCommands extends TaskBase
         }
     }
 
+    /**
+     * Setup all optimal Pantheon integrations for Drupal.
+     *
+     * @param ConsoleIO $io
+     * @return int
+     */
     #[Command(name: self::COMMAND_FILES_SETUP)]
     public function pantheonFilesSetup(ConsoleIO $io): int
     {

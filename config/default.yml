@@ -1,21 +1,42 @@
 pantheon:
+  # Regex to match the Pantheon git repository URL. Primarily used to identify that artifact push destinations contain
+  # a Pantheon git repository URL.
   git-repo-regex: '/^ssh:\/\/codeserver\.dev\.[a-f0-9\-]+@codeserver\.dev\.[a-f0-9\-]+\.drush\.in:2222\/~\/repository\.git$/'
   site-info:
+    # The Pantheon site UUID. Can be found in the browser URL when viewing the site in the Pantheon dashboard.
     id: ~
+    # The Pantheon site name. Can be found by running `terminus site:list --filter=id=<site-uuid> --field=name`.
     name: ~
   terminus:
+    # The Terminus machine token to use to authenticate Terminus.
+    # For creating tokens, see https://docs.pantheon.io/machine-tokens#create-a-machine-token.
     machine-token: ~
+    # The default Terminus executable path.
     bin: terminus
+    # When this extension runs a command via Terminus that requires a site to be specified, this is the default value
+    # that will be used.
     default-site-name: ${pantheon.site-info.name}
+    # These plugins will be installed when running `polymer pantheon:terminus:plugins:install`. The `pantheon.plugins`
+    # elements can either be:
+    # - A single string, optionally including version constraint (e.g. "pantheon-systems/terminus-build-tools-plugin:1.x-dev")
+    # - A single array with name/value keys, where name is assigned the plugin name and value is separate.
+    # Each element should be keyed by a unique string that identifies the plugin to be installed. This makes it
+    # trivial to override its configuration in higher-priority configuration contexts (e.g. `<project-root>/polymer/polymer.yml`).
     plugins:
-      - name: pantheon-systems/terminus-quicksilver-plugin
+      quicksilver:
+        name: pantheon-systems/terminus-quicksilver-plugin
         version: 1.x-dev
   quicksilver:
-    default-profile: development
+    # The recommended Quicksilver profiles to install. The Quicksilver
+    # webhook collections associated with each profile can be seen by
+    # reviewing `~/.quicksilver/quicksilver.yml`.
     install-profiles:
       - deployment
   multidev:
+    # The default Pantheon environment to use to base new multidev environments on.
     default-source-env: dev
+  # The default file mappings to use for template files controlled by this extension. Modify the below mapping
+  # configuration to alter sources, destinations, or file names.
   file-mappings:
     pantheon-settings:
       name: pantheon.yml

@@ -30,7 +30,6 @@ It will do the following:
 
 - Create the Drush site file needed to interact with the remote Pantheon application.
 - Create a `pantheon.yml` file if it doesn't already exist.
-- Install the Terminus Quicksilver plugin.
-- Install the Quicksilver configuration file.
-- Install Quicksilver webhooks into your application and updates pantheon.yml to use them.
+- Install the Terminus Quicksilver plugin and configuration file.
+- Install Quicksilver webhooks into your application and updates `pantheon.yml` to use them.
 - Integrate `sites/default/settings.php` with Pantheon's settings file.
