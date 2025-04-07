@@ -211,17 +211,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_files_setup_drupal/</loc>
-         <lastmod>2025-04-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_quicksilver_install-configuration/</loc>
          <lastmod>2025-04-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_quicksilver_install-profile/</loc>
+         <lastmod>2025-04-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/latest/commands/pantheon_setup_drupal/</loc>
          <lastmod>2025-04-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
