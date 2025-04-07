@@ -29,6 +29,15 @@ final class PantheonFileCommands extends TaskBase
     public const TERMINUS_PLUGIN_QUICKSILVER_ID        = 'terminus-quicksilver-plugin';
     public const TERMINUS_PLUGIN_BUILD_TOOLS_ID        = 'terminus-build-tools-plugin';
 
+    /**
+     * Install the Quicksilver plugin configuration file.
+     *
+     * By default, the file is installed to `~/.quicksilver/quicksilver.yml`.
+     *
+     * @param \Robo\Symfony\ConsoleIO $io
+     *
+     * @return int
+     */
     #[Command(name: self::COMMAND_QUICKSILVER_INSTALL_CONFIG)]
     public function installQuicksilverConfiguration(ConsoleIO $io): int
     {
@@ -37,6 +46,16 @@ final class PantheonFileCommands extends TaskBase
         ]);
     }
 
+    /**
+     * Generate Drush file that interacts with configured Pantheon environment.
+     *
+     * By default, the file is installed to
+     * `[project-root]/drush/sites/[pantheon-site-name].site.yml`.
+     *
+     * @param \Robo\Symfony\ConsoleIO $io
+     *
+     * @return int
+     */
     #[Command(name: self::COMMAND_CREATE_DRUSH_YAML)]
     public function generateDrushSiteYaml(ConsoleIO $io): int
     {
@@ -45,6 +64,14 @@ final class PantheonFileCommands extends TaskBase
         ]);
     }
 
+    /**
+     * Add pantheon.yml to the project root.
+     *
+     * @param \Robo\Symfony\ConsoleIO $io
+     * @param bool $force
+     *
+     * @return int
+     */
     #[Command(name: self::COMMAND_COPY_PANTHEON_FILE)]
     #[Option(name: 'force', description: 'Force copy of pantheon.yml file')]
     public function copyPantheonSettingsFile(ConsoleIO $io, bool $force = false): int
@@ -55,6 +82,16 @@ final class PantheonFileCommands extends TaskBase
         ]);
     }
 
+  /**
+   * Installs configured Quicksilver profiles.
+   *
+   * See https://github.com/pantheon-systems/terminus-quicksilver-plugin.
+   *
+   * @param \Robo\Symfony\ConsoleIO $io
+   *
+   * @return int
+   * @throws \Robo\Exception\TaskException
+   */
     #[Command(name: self::COMMAND_QUICKSILVER_INSTALL_PROFILES)]
     #[HookSelector(name: self::VALIDATE_SELECTOR_TERMINUS_PLUGIN, value: self::TERMINUS_PLUGIN_QUICKSILVER_ID)]
     public function installQuicksilverProfiles(ConsoleIO $io): int
@@ -77,6 +114,14 @@ final class PantheonFileCommands extends TaskBase
         return 0;
     }
 
+    /**
+     * Install Terminus plugins required by Polymer Pantheon Drupal extension.
+     *
+     * @param \Robo\Symfony\ConsoleIO $io
+     *
+     * @return int
+     * @throws \Robo\Exception\TaskException
+     */
     #[Command(name: self::COMMAND_TERMINUS_PLUGINS)]
     public function installTerminusPlugins(ConsoleIO $io): int
     {

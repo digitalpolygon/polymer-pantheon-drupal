@@ -71,5 +71,7 @@ nav:
   - Home: index.md
   - Development: development.md
   - Use:
+      - Setup: setup.md
       - Workflows: workflows.md
-      - Pantheon Files and Quicksilver: file_setup.md
+      - Templates: templates.md
+      - Quicksilver: quicksilver.md
