@@ -7,8 +7,21 @@ to help users manage their Pantheon applications more effectively by
 incorporating what the community has learned over the years from working with
 Pantheon-hosted Drupal applications.
 
-## Quick start
+## Installation
 
-Clone the repository and run `ddev init`. This will re-create the development
-environment, build the documentation, and launch the local version of the
-documentation site in your browser.
+Require this extension in your `composer.json` file:
+
+```bash
+composer require digitalpolygon/polymer-pantheon-drupal
+```
+
+Update your `polymer.yml` file to include the following configuration:
+
+```yaml
+pantheon:
+  site-info:
+    id: <your pantheon site id>
+    name: <your pantheon site name>
+```
+
+To complete installation, follow the [setup instructions in the Setup section](setup.md).
