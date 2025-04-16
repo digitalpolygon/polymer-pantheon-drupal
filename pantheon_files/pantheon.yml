@@ -1,12 +1,5 @@
-#drush_version: 10
-# Put overrides to your pantheon.upstream.yml file here.
-# For more information, see: https://pantheon.io/docs/pantheon-yml/
 api_version: 1
-database:
-  version: 10.4
 build_step: false
-# See https://pantheon.io/docs/pantheon-yml/#enforce-https--hsts for valid values.
-enforce_https: transitional
 php_version: #php-version#
 web_docroot: true
 protected_web_paths:
