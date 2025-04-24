@@ -47,5 +47,4 @@ final class PolymerPantheonDrupalServiceProvider extends AbstractServiceProvider
         $container = $this->getContainer();
         $container->addShared('pantheonDrupalEventsSubscriber', DrupalEventsSubscriber::class);
     }
-
 }
