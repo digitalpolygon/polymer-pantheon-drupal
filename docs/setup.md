@@ -2,6 +2,14 @@
 
 ## Prerequisites
 
+### Composer installation
+
+If you haven't already, install this extension via Composer:
+
+```bash
+composer require digitalpolygon/polymer-pantheon-drupal:0.x-dev
+```
+
 ### Install Terminus
 
 Before you get started, if you don't already have Terminus installed in your environment, install it. See the
@@ -14,9 +22,14 @@ Update your `polymer/polymer.yml` file to include the following configuration:
 ```yaml
 pantheon:
   site-info:
-    id: <your pantheon site id>
+    id: <your pantheon site uuid>
     name: <your pantheon site name>
 ```
+
+!!! tip
+
+    The Pantheon site UUID can be found in the browser URL when viewing the site in the Pantheon dashboard.
+    The Pantheon site name can be found by running `terminus site:list --filter=id=<site-uuid> --field=name`.
 
 ## Install critical files and plugins
 

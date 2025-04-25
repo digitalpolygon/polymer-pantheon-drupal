@@ -12,7 +12,7 @@ Pantheon-hosted Drupal applications.
 Require this extension in your `composer.json` file:
 
 ```bash
-composer require digitalpolygon/polymer-pantheon-drupal
+composer require digitalpolygon/polymer-pantheon-drupal:0.x-dev
 ```
 
 Update your `polymer.yml` file to include the following configuration:
@@ -20,7 +20,7 @@ Update your `polymer.yml` file to include the following configuration:
 ```yaml
 pantheon:
   site-info:
-    id: <your pantheon site id>
+    id: <your pantheon site uuid>
     name: <your pantheon site name>
 ```
 
