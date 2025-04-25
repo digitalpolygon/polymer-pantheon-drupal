@@ -35,7 +35,7 @@ final class PantheonPrMultidevDelete extends GitHubWorkflowTemplateBase
     {
         return [
         new Token('#php-version#', '8.3', true),
-        new Token('#default-branch#', $this->getConfigValue('git.default_branch', 'main'), true),
+        new Token('#default-branch#', $this->getConfigValue('git.default-branch', 'main'), true),
         new Token('#pantheon-site-name#', $this->getConfigValue('pantheon.site-info.name'), true),
         ];
     }

@@ -33,7 +33,7 @@ final class PantheonPushDev extends GitHubWorkflowTemplateBase
     {
         return [
         new Token('#default-artifact#', $this->getConfigValue('default_artifact', 'main'), true),
-        new Token('#default-branch#', $this->getConfigValue('git.default_branch', 'main'), true),
+        new Token('#default-branch#', $this->getConfigValue('git.default-branch', 'main'), true),
         ];
     }
 
