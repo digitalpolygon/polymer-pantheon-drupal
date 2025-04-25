@@ -2,13 +2,12 @@
 
 Integrate New Relic with your Pantheon site by following these steps:
 
-1. [Activate New Relic on your site](https://docs.pantheon.io/guides/new-relic/activate-new-relic).
-2. In the Polymer configuration, set `pantheon.new-relic.enable` to `true`.
-3. Run the following command to install required plugins:
+1. In the Polymer configuration, set `pantheon.new-relic.enable` to `true`.
+2. Run the following command to install required plugins:
    ```bash
    polymer pantheon:terminus:plugins:install
    ```
-4. Set up New Relic integration by running:
+3. Set up New Relic integration by running:
    ```bash
    polymer pantheon:new-relic:setup
    ```
