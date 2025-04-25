@@ -30,13 +30,20 @@ final class NewRelicCommands extends TaskBase
     {
         $newRelicEnabled = $this->getConfigValue('pantheon.new-relic.enable', false);
         $apiKey = $this->getConfigValue('pantheon.new-relic.api-key');
-        $siteId = $this->getConfigValue('pantheon.site-info.name');
+        $siteName = $this->getConfigValue('pantheon.site-info.name');
         $secretName = 'new_relic_api_key';
         if ($newRelicEnabled) {
             $terminusBin = $this->getConfigValue('pantheon.terminus.bin', 'terminus');
             try {
+                $io->writeln("Enabling New Relic for site $siteName...");
+                $this->execCommand("$terminusBin new-relic:enable $siteName --no-interaction");
+                $io->writeln("Enabled New Relic for site $siteName!");
+            } catch (AbortTasksException $e) {
+                $io->writeln("Either New Relic is already enabled for the site, or there was another error trying to enable it.");
+            }
+            try {
                 $io->writeln("Checking to see if New Relic API key already exists in Pantheon secrets...");
-                $this->execCommand("$terminusBin secret:site:list $siteId --filter=name=$secretName --format=string | grep $secretName");
+                $this->execCommand("$terminusBin secret:site:list $siteName --filter=name=$secretName --format=string | grep $secretName");
                 $io->writeln("New Relic API key already exists in Pantheon secrets.");
             } catch (AbortTasksException $e) {
                 $io->error("Either the Pantheon secret '$secretName' does not exist or you do not have permission to view it. Check with your Pantheon application contact.");
@@ -48,7 +55,7 @@ final class NewRelicCommands extends TaskBase
                     $io->writeln("Consider setting the API key in configuration pantheon.new-relic.api-key.");
                     $apiKey = password("Enter New Relic API Key:", '', true);
                 }
-                $result = $this->execCommand("$terminusBin secret:site:set $siteId $secretName $apiKey --type=runtime --scope=web --no-interaction");
+                $result = $this->execCommand("$terminusBin secret:site:set $siteName $secretName $apiKey --type=runtime --scope=web --no-interaction");
                 if ($result !== 0) {
                     $io->error("Failed to set New Relic API key in Pantheon secrets. You may not have permission to set secrets. Check with your Pantheon application contact.");
                     return 1;
