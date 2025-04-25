@@ -31,8 +31,9 @@ repo_name: digitalpolygon/polymer-pantheon-drupal
 edit_uri: blob/0.x/docs
 site_url: https://digitalpolygon.github.io/polymer-pantheon-drupal/latest/
 plugins:
-  - edit_url
   - search
+  - markdownextradata
+  - edit_url
   - git-revision-date-localized:
       exclude:
         - commands/*
@@ -75,3 +76,4 @@ nav:
       - Workflows: workflows.md
       - Templates: templates.md
       - Quicksilver: quicksilver.md
+      - New Relic: newrelic.md
