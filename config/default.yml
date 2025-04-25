@@ -26,6 +26,7 @@ pantheon:
       quicksilver:
         name: pantheon-systems/terminus-quicksilver-plugin
         version: 1.x-dev
+      secrets: pantheon-systems/terminus-secrets-manager-plugin
   quicksilver:
     # The recommended Quicksilver profiles to install. The Quicksilver
     # webhook collections associated with each profile can be seen by
@@ -35,6 +36,8 @@ pantheon:
   multidev:
     # The default Pantheon environment to use to base new multidev environments on.
     default-source-env: dev
+  new-relic:
+    enable: false
   # The default file mappings to use for template files controlled by this extension. Modify the below mapping
   # configuration to alter sources, destinations, or file names.
   file-mappings:

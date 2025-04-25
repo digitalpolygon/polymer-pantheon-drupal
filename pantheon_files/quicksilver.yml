@@ -23,3 +23,5 @@ repositories:
 profiles:
   deployment:
     - drush_deploy_hooks
+  new-relic:
+    - new_relic_deploy

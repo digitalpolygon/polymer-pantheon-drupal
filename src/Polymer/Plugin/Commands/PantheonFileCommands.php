@@ -10,7 +10,6 @@ use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\AnnotatedCommand\Hooks\HookManager;
 use DigitalPolygon\Polymer\Robo\Commands\Template\TemplateCommand;
 use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Exception\TerminusPluginNotInstalledException;
 use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\DrushSiteYaml;
 use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\PantheonYaml;
 use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\QuicksilverYaml;
@@ -82,21 +81,25 @@ final class PantheonFileCommands extends TaskBase
         ]);
     }
 
-  /**
-   * Installs configured Quicksilver profiles.
-   *
-   * See https://github.com/pantheon-systems/terminus-quicksilver-plugin.
-   *
-   * @param \Robo\Symfony\ConsoleIO $io
-   *
-   * @return int
-   * @throws \Robo\Exception\TaskException
-   */
+    /**
+     * Installs configured Quicksilver profiles.
+     *
+     * See https://github.com/pantheon-systems/terminus-quicksilver-plugin.
+     *
+     * @param \Robo\Symfony\ConsoleIO $io
+     *
+     * @return int
+     * @throws \Robo\Exception\TaskException
+     */
     #[Command(name: self::COMMAND_QUICKSILVER_INSTALL_PROFILES)]
     #[HookSelector(name: self::VALIDATE_SELECTOR_TERMINUS_PLUGIN, value: self::TERMINUS_PLUGIN_QUICKSILVER_ID)]
     public function installQuicksilverProfiles(ConsoleIO $io): int
     {
         $profiles = $this->getConfigValue('pantheon.quicksilver.install-profiles');
+        $enableNewRelic = $this->getConfigValue('pantheon.new-relic.enable', false);
+        if ($enableNewRelic) {
+            $profiles[] = 'new-relic';
+        }
         $terminusBin = $this->getConfigValue('pantheon.terminus.bin', 'terminus');
         $task = $this->taskExecStack()
             ->printOutput(false)
@@ -177,8 +180,8 @@ final class PantheonFileCommands extends TaskBase
             $task->exec("terminus self:plugin:list | grep $plugin");
         }
         $result = $task->run();
-        if ($result->getExitCode() !== 0 && isset($plugin)) {
-            throw new TerminusPluginNotInstalledException($plugin);
+        if ($result->getExitCode() !== 0) {
+            throw new \RuntimeException("Some Terminus plugins are not installed. To install configured plugins, run: <info>polymer pantheon:terminus:plugins:install</info>.");
         }
     }
 
