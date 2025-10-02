@@ -1,8 +1,8 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template;
 
-use DigitalPolygon\Polymer\Robo\Template\Template;
+use DigitalPolygon\Polymer\Core\Robo\Template\Template;
 
 class QuicksilverYaml extends Template
 {

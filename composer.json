@@ -1,5 +1,6 @@
 {
     "name": "digitalpolygon/polymer-pantheon-drupal",
+    "type": "polymer-plugin",
     "description": "Helpful scripts and tools for integrating Drupal with Pantheon.",
     "authors":[
         {
@@ -14,10 +15,8 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "autoload": {
-        "psr-4": {
-            "DigitalPolygon\\PolymerPantheon\\Drupal\\": "./src/"
-        }
+    "extra": {
+      "installer-name": "polymer_pantheon_drupal"
     },
     "require": {
         "digitalpolygon/polymer-drupal": "0.x-dev",

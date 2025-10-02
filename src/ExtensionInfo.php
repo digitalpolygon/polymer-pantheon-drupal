@@ -1,8 +1,8 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal;
 
-use DigitalPolygon\Polymer\Robo\Extension\PolymerExtensionBase;
+use DigitalPolygon\Polymer\Core\Robo\Extension\PolymerExtensionBase;
 
 class ExtensionInfo extends PolymerExtensionBase
 {

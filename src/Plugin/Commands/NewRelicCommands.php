@@ -1,10 +1,10 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Commands;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Commands;
 
 use Consolidation\AnnotatedCommand\Attributes\Command;
 use Consolidation\AnnotatedCommand\Attributes\HookSelector;
-use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
+use DigitalPolygon\Polymer\Core\Robo\Tasks\TaskBase;
 use Robo\Exception\AbortTasksException;
 use Robo\Symfony\ConsoleIO;
 
