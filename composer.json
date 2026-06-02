@@ -15,9 +15,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "extra": {
-      "installer-name": "polymer_pantheon_drupal"
-    },
     "require": {
         "digitalpolygon/polymer-drupal": "dev-feature/refactor-organization",
         "pantheon-systems/drupal-integrations": "* !=11.0.0"
@@ -35,9 +32,7 @@
             "digitalpolygon/drupal-upgrade-plugin": true,
             "phpstan/extension-installer": true,
             "phpro/grumphp-shim": true,
-            "composer/installers": true,
-            "mnsami/composer-custom-directory-installer": true,
-            "oomphinc/composer-installers-extender": true
+            "composer/installers": true
         }
     },
     "scripts": {
