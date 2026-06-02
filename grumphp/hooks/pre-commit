@@ -15,7 +15,7 @@ export GRUMPHP_GIT_WORKING_DIR="$(git rev-parse --show-toplevel)"
 DDEV_PREFIX="ddev exec --"
 COMMAND_PREFIX=""
 
-if [ -z "${IS_DDEV_PROJECT}" ]; then
+if [ -z "${IS_DDEV_PROJECT}" ] && [ -d .ddev ] && command -v ddev >/dev/null 2>&1; then
   COMMAND_PREFIX="${DDEV_PREFIX}"
 fi
 
