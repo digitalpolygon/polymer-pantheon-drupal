@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "digitalpolygon/polymer-drupal": "dev-feature/refactor-organization",
+        "digitalpolygon/polymer-drupal": "0.x-dev",
         "pantheon-systems/drupal-integrations": "* !=11.0.0"
     },
     "require-dev": {
