@@ -1,10 +1,9 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Services\EventSubscriber;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Services\EventSubscriber;
 
-use Consolidation\Config\ConfigInterface;
-use DigitalPolygon\Polymer\Robo\Config\ConfigAwareTrait;
-use DigitalPolygon\PolymerDrupal\Polymer\Services\Event\SiteSettingsFiles;
+use DigitalPolygon\Polymer\Core\Robo\Config\ConfigAwareTrait;
+use DigitalPolygon\Polymer\polymer_drupal\Services\Event\SiteSettingsFiles;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Robo\Contract\ConfigAwareInterface;

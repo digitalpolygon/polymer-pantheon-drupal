@@ -1,5 +1,6 @@
 {
     "name": "digitalpolygon/polymer-pantheon-drupal",
+    "type": "polymer-plugin",
     "description": "Helpful scripts and tools for integrating Drupal with Pantheon.",
     "authors":[
         {
@@ -14,11 +15,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "autoload": {
-        "psr-4": {
-            "DigitalPolygon\\PolymerPantheon\\Drupal\\": "./src/"
-        }
-    },
     "require": {
         "digitalpolygon/polymer-drupal": "0.x-dev",
         "pantheon-systems/drupal-integrations": "* !=11.0.0"
@@ -35,17 +31,23 @@
             "digitalpolygon/polymer": true,
             "digitalpolygon/drupal-upgrade-plugin": true,
             "phpstan/extension-installer": true,
-            "phpro/grumphp-shim": true
+            "phpro/grumphp-shim": true,
+            "composer/installers": true
         }
     },
     "scripts": {
         "lint": "find src test/src -name '*.php' -print0 | xargs -0 -n1 -P4 -- php -l",
-        "cs": "phpcs",
+        "cs": "phpcs --standard=phpcs-non-drupal.xml.dist --report=full -s",
         "sa": "phpstan analyse -v -c phpstan.neon",
         "validations": [
             "@lint",
             "@cs",
             "@sa"
         ]
+    },
+  "autoload-dev": {
+    "psr-4": {
+      "DigitalPolygon\\Polymer\\polymer_drupal\\": "vendor/digitalpolygon/polymer-drupal/src/"
     }
+  }
 }

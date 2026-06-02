@@ -1,9 +1,9 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\GitHubWorkflows;
 
-use DigitalPolygon\Polymer\Robo\Template\GitHub\GitHubWorkflowTemplateBase;
-use DigitalPolygon\Polymer\Robo\Template\Token;
+use DigitalPolygon\Polymer\Core\Robo\Template\GitHub\GitHubWorkflowTemplateBase;
+use DigitalPolygon\Polymer\Core\Robo\Template\Token;
 
 final class PantheonPush extends GitHubWorkflowTemplateBase
 {

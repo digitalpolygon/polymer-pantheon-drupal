@@ -1,16 +1,8 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal;
 
-use DigitalPolygon\Polymer\Robo\Template\TemplateInterface;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\DrushSiteYaml;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPrMultidevCreate;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPrMultidevDelete;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPush;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows\PantheonPushDev;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\PantheonYaml;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\QuicksilverYaml;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Services\EventSubscriber\DrupalEventsSubscriber;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Services\EventSubscriber\DrupalEventsSubscriber;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 

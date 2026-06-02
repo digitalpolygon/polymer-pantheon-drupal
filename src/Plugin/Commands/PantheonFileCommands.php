@@ -1,6 +1,6 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Commands;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Commands;
 
 use Consolidation\AnnotatedCommand\Attributes\Command;
 use Consolidation\AnnotatedCommand\Attributes\Hook;
@@ -8,11 +8,11 @@ use Consolidation\AnnotatedCommand\Attributes\HookSelector;
 use Consolidation\AnnotatedCommand\Attributes\Option;
 use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\AnnotatedCommand\Hooks\HookManager;
-use DigitalPolygon\Polymer\Robo\Commands\Template\TemplateCommand;
-use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\DrushSiteYaml;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\PantheonYaml;
-use DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\QuicksilverYaml;
+use DigitalPolygon\Polymer\Core\Robo\Commands\Template\TemplateCommand;
+use DigitalPolygon\Polymer\Core\Robo\Tasks\TaskBase;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\DrushSiteYaml;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\PantheonYaml;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\QuicksilverYaml;
 use Robo\Contract\VerbosityThresholdInterface;
 use Robo\Symfony\ConsoleIO;
 

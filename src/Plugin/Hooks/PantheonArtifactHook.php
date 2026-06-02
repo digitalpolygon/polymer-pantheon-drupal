@@ -1,15 +1,15 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Hooks;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Hooks;
 
 use Consolidation\AnnotatedCommand\AnnotatedCommand;
 use Consolidation\AnnotatedCommand\AnnotationData;
 use Consolidation\AnnotatedCommand\Attributes\Hook;
 use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\AnnotatedCommand\Hooks\HookManager;
-use DigitalPolygon\Polymer\Robo\Commands\Artifact\DeployCommand;
-use DigitalPolygon\Polymer\Robo\Exceptions\BadConfigurationValueException;
-use DigitalPolygon\Polymer\Robo\Tasks\TaskBase;
+use DigitalPolygon\Polymer\Core\Robo\Commands\Artifact\DeployCommand;
+use DigitalPolygon\Polymer\Core\Robo\Exceptions\BadConfigurationValueException;
+use DigitalPolygon\Polymer\Core\Robo\Tasks\TaskBase;
 
 class PantheonArtifactHook extends TaskBase
 {

@@ -1,22 +1,22 @@
 <?php
 
-namespace DigitalPolygon\PolymerPantheon\Drupal\Polymer\Plugin\Template\GitHubWorkflows;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\GitHubWorkflows;
 
-use DigitalPolygon\Polymer\Robo\Template\GitHub\GitHubWorkflowTemplateBase;
-use DigitalPolygon\Polymer\Robo\Template\Token;
+use DigitalPolygon\Polymer\Core\Robo\Template\GitHub\GitHubWorkflowTemplateBase;
+use DigitalPolygon\Polymer\Core\Robo\Template\Token;
 
-final class PantheonPrMultidevCreate extends GitHubWorkflowTemplateBase
+final class PantheonPrMultidevDelete extends GitHubWorkflowTemplateBase
 {
-    public const BASE_FILENAME = 'pantheon-pr-multidev-create.yml';
+    public const BASE_FILENAME = 'pantheon-pr-multidev-delete.yml';
 
     public static function id(): string
     {
-        return 'github-pantheon-pr-multidev-create';
+        return 'github-pantheon-pr-multidev-delete';
     }
 
     public function description(): string
     {
-        return 'A GitHub workflow that runs on pull requests to the default branch, builds an artifact, pushes it, and finally creates a Pantheon multidev environment for the artifact.';
+        return 'A GitHub workflow that runs on pull requests and deletes the associated Pantheon multidev environment.';
     }
 
     public function source(): string
@@ -37,7 +37,6 @@ final class PantheonPrMultidevCreate extends GitHubWorkflowTemplateBase
         new Token('#php-version#', '8.3', true),
         new Token('#default-branch#', $this->getConfigValue('git.default-branch', 'main'), true),
         new Token('#pantheon-site-name#', $this->getConfigValue('pantheon.site-info.name'), true),
-        new Token('#default-multidev-source-env#', $this->getConfigValue('pantheon.multidev.default-source-env', 'dev'), true),
         ];
     }
 
