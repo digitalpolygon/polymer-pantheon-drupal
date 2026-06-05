@@ -26,6 +26,7 @@
         "phpro/grumphp-shim": "^2.5",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^1.11",
+        "phpunit/phpunit": "^9 || ^10",
         "squizlabs/php_codesniffer": "^3"
     },
     "config": {
@@ -37,14 +38,21 @@
             "composer/installers": true
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "DigitalPolygon\\PolymerPantheonDrupalTest\\": "tests/"
+        }
+    },
     "scripts": {
         "lint": "find src test/src -name '*.php' -print0 | xargs -0 -n1 -P4 -- php -l",
         "cs": "phpcs --standard=phpcs-non-drupal.xml.dist --report=full -s",
         "sa": "phpstan analyse -v -c phpstan.neon",
+        "test": "phpunit -c tests/phpunit/phpunit.xml.dist --no-coverage",
         "validations": [
             "@lint",
             "@cs",
-            "@sa"
+            "@sa",
+            "@test"
         ]
     }
 }
