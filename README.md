@@ -9,3 +9,56 @@ applications.
 - Quicksilver hooks
 - GitHub Actions workflows
 - Drush site file generation
+
+## Internal seam: `Hosting/` + `Drupal/`
+
+This package is structured so the agnostic Pantheon code can be lifted into a
+standalone `digitalpolygon/polymer-pantheon` later (when a second CMS — e.g.
+WordPress — needs it) as a clean move + namespace find-replace. See DESIGN.md §7.
+
+```
+src/
+├── Hosting/   ← agnostic Pantheon services / value objects / exceptions. The
+│                future DigitalPolygon\Polymer\Pantheon\. NO Drupal references.
+├── Drupal/    ← glue: listens to polymer-drupal events (via
+│                polymer-drupal-contracts) and calls into Hosting/.
+├── Plugin/    ← discovered Robo commands / hooks / templates; the seam is
+│   │            nested UNDER the fixed discovery roots (see note below):
+│   ├── Commands/                 (+ Commands/Hosting, Commands/Drupal)
+│   ├── Hooks/Hosting/            agnostic Pantheon hooks (PantheonArtifactHook)
+│   └── Template/
+│       ├── Hosting/              agnostic config + CI (PantheonYaml,
+│       │                         QuicksilverYaml, GitHubWorkflows/…)
+│       └── Drupal/               Drupal-coupled (DrushSiteYaml)
+├── ExtensionInfo.php
+└── PolymerPantheonDrupalServiceProvider.php
+```
+
+### The one-way dependency rule
+
+**Nothing under `Hosting/` may import Drupal** — not `Drupal\…` (Drupal core),
+not `DigitalPolygon\Polymer\Drupal\…` (the Drupal contracts), and not the
+`polymer_drupal` extension namespace. The urge to add such a `use` in `Hosting/`
+is the signal the code belongs in `Drupal/` instead. This single rule keeps the
+future `polymer-pantheon` truly CMS-agnostic, and it is enforced in CI (the
+"Hosting seam" job) across **every** `Hosting/` location — top-level and the ones
+nested under `Plugin/`.
+
+The `Drupal/` glue is free to depend on both sides: it listens to
+`polymer-drupal`'s events through `polymer-drupal-contracts` and calls into
+`Hosting/`.
+
+### Discovery & the nested seam
+
+Polymer discovers commands, hooks, and templates with a **recursive** scan rooted
+at the fixed `Plugin\Commands` / `Plugin\Hooks` / `Plugin\Template` namespaces,
+building each class's FQN from its file path. Because the scan recurses, the seam
+is expressed by **nesting under** those roots — `Plugin\Template\Hosting\PantheonYaml`
+is discovered exactly like `Plugin\Template\PantheonYaml` would be. No core change
+is needed; the fixed discovery roots stay the uniform convention for every plugin.
+
+**Commands currently stay flat** at `Plugin\Commands`: `NewRelicCommands` (agnostic)
+depends on `PantheonFileCommands` constants, and `PantheonFileCommands` mixes
+agnostic Terminus-plugin management with Drupal-specific file generation. Seaming
+them cleanly needs a small refactor (lift the shared Terminus-plugin constants into
+`Hosting/`), not just a move — so it's deferred rather than forced.

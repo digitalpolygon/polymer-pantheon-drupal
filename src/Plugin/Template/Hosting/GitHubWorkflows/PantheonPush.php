@@ -1,6 +1,6 @@
 <?php
 
-namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\GitHubWorkflows;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\Hosting\GitHubWorkflows;
 
 use DigitalPolygon\Polymer\Core\Robo\Template\GitHub\GitHubWorkflowTemplateBase;
 use DigitalPolygon\Polymer\Core\Robo\Template\Token;

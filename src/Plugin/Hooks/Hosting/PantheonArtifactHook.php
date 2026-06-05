@@ -1,6 +1,6 @@
 <?php
 
-namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Hooks;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Hooks\Hosting;
 
 use Consolidation\AnnotatedCommand\AnnotatedCommand;
 use Consolidation\AnnotatedCommand\AnnotationData;

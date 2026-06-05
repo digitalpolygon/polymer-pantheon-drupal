@@ -2,7 +2,7 @@
 
 namespace DigitalPolygon\Polymer\polymer_pantheon_drupal;
 
-use DigitalPolygon\Polymer\polymer_pantheon_drupal\Services\EventSubscriber\DrupalEventsSubscriber;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Drupal\EventSubscriber\DrupalEventsSubscriber;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 

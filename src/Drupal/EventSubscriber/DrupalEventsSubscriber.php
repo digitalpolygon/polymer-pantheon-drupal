@@ -1,9 +1,10 @@
 <?php
 
-namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Services\EventSubscriber;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Drupal\EventSubscriber;
 
 use DigitalPolygon\Polymer\Core\Robo\Config\ConfigAwareTrait;
-use DigitalPolygon\Polymer\polymer_drupal\Services\Event\SiteSettingsFiles;
+use DigitalPolygon\Polymer\Drupal\Contracts\Event\CollectSettingsFilesEvent;
+use DigitalPolygon\Polymer\Drupal\Contracts\Event\DrupalSettingsEvents;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Robo\Contract\ConfigAwareInterface;
@@ -14,7 +15,7 @@ class DrupalEventsSubscriber implements EventSubscriberInterface, ConfigAwareInt
     use LoggerAwareTrait;
     use ConfigAwareTrait;
 
-    public function addDefaultSiteSettings(SiteSettingsFiles $event): void
+    public function addDefaultSiteSettings(CollectSettingsFilesEvent $event): void
     {
         $docroot = $this->getConfigValue('docroot');
         $pantheonPath = dirname($this->getConfigValue('composer.bin', '')) . '/pantheon-systems/drupal-integrations';
@@ -47,7 +48,7 @@ SETTING;
     public static function getSubscribedEvents(): array
     {
         return [
-            SiteSettingsFiles::class => 'addDefaultSiteSettings',
+            DrupalSettingsEvents::COLLECT_SETTINGS_FILES => 'addDefaultSiteSettings',
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Exception;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Hosting\Exception;
 
 class TerminusPluginNotInstalledException extends \RuntimeException
 {

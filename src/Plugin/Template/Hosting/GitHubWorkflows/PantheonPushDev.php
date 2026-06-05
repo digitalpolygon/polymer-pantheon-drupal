@@ -1,42 +1,39 @@
 <?php
 
-namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\GitHubWorkflows;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\Hosting\GitHubWorkflows;
 
 use DigitalPolygon\Polymer\Core\Robo\Template\GitHub\GitHubWorkflowTemplateBase;
 use DigitalPolygon\Polymer\Core\Robo\Template\Token;
 
-final class PantheonPrMultidevDelete extends GitHubWorkflowTemplateBase
+final class PantheonPushDev extends GitHubWorkflowTemplateBase
 {
-    public const BASE_FILENAME = 'pantheon-pr-multidev-delete.yml';
-
     public static function id(): string
     {
-        return 'github-pantheon-pr-multidev-delete';
+        return 'github-pantheon-push-dev';
     }
 
     public function description(): string
     {
-        return 'A GitHub workflow that runs on pull requests and deletes the associated Pantheon multidev environment.';
+        return 'A GitHub workflow that calls the github-pantheon-push workflow to build and push the artifact to the Pantheon dev environment (master branch).';
     }
 
     public function source(): string
     {
         return $this
         ->getConfig()
-        ->get('extension.polymer_pantheon_drupal.root') . '/workflows/github/' . self::BASE_FILENAME;
+        ->get('extension.polymer_pantheon_drupal.root') . '/workflows/github/pantheon-push-dev.yml';
     }
 
     public function destination(): string
     {
-        return $this->getGitHubWorkflowDir() . '/' . self::BASE_FILENAME;
+        return $this->getGitHubWorkflowDir() . '/pantheon-push-dev.yml';
     }
 
     public function tokens(): array
     {
         return [
-        new Token('#php-version#', '8.3', true),
+        new Token('#default-artifact#', $this->getConfigValue('default_artifact', 'main'), true),
         new Token('#default-branch#', $this->getConfigValue('git.default-branch', 'main'), true),
-        new Token('#pantheon-site-name#', $this->getConfigValue('pantheon.site-info.name'), true),
         ];
     }
 

@@ -10,9 +10,9 @@ use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\AnnotatedCommand\Hooks\HookManager;
 use DigitalPolygon\Polymer\Core\Robo\Commands\Template\TemplateCommand;
 use DigitalPolygon\Polymer\Core\Robo\Tasks\TaskBase;
-use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\DrushSiteYaml;
-use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\PantheonYaml;
-use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\QuicksilverYaml;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\Drupal\DrushSiteYaml;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\Hosting\PantheonYaml;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\Hosting\QuicksilverYaml;
 use Robo\Contract\VerbosityThresholdInterface;
 use Robo\Symfony\ConsoleIO;
 

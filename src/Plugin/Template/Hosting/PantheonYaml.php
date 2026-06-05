@@ -1,6 +1,6 @@
 <?php
 
-namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template;
+namespace DigitalPolygon\Polymer\polymer_pantheon_drupal\Plugin\Template\Hosting;
 
 use DigitalPolygon\Polymer\Core\Robo\Template\Template;
 use DigitalPolygon\Polymer\Core\Robo\Template\Token;
