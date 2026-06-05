@@ -3,7 +3,7 @@
     "type": "polymer-plugin",
     "description": "Helpful scripts and tools for integrating Drupal with Pantheon.",
     "license": "GPL-2.0-only",
-    "authors":[
+    "authors": [
         {
             "name": "Digital Polygon Engineering",
             "homepage": "https://www.digitalpolygon.com/",
@@ -17,8 +17,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "digitalpolygon/polymer": "0.x-dev",
-        "digitalpolygon/polymer-drupal-contracts": "0.x-dev",
+        "digitalpolygon/polymer": "^0.2.0-alpha1",
+        "digitalpolygon/polymer-drupal-contracts": "^0.2.0-alpha1",
         "pantheon-systems/drupal-integrations": "* !=11.0.0"
     },
     "require-dev": {
@@ -36,6 +36,11 @@
             "phpstan/extension-installer": true,
             "phpro/grumphp-shim": true,
             "composer/installers": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-0.x": "0.2.x-dev"
         }
     },
     "autoload-dev": {
