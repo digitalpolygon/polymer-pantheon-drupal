@@ -1,7 +1,8 @@
 pantheon:
   # Regex to match the Pantheon git repository URL. Primarily used to identify that artifact push destinations contain
-  # a Pantheon git repository URL.
-  git-repo-regex: '/^ssh:\/\/codeserver\.dev\.[a-f0-9\-]+@codeserver\.dev\.[a-f0-9\-]+\.drush\.in:2222\/~\/repository\.git$/'
+  # a Pantheon git repository URL. The default lives in Hosting\Pantheon\PantheonRepository::DEFAULT_GIT_URL_REGEX
+  # (the single source of truth) — uncomment and set this value only to override it:
+  # git-repo-regex: '/^ssh:\/\/…$/'
   site-info:
     # The Pantheon site UUID. Can be found in the browser URL when viewing the site in the Pantheon dashboard.
     id: ~

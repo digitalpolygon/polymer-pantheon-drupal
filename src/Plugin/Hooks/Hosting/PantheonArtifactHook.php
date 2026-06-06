@@ -8,14 +8,11 @@ use Consolidation\AnnotatedCommand\Attributes\Hook;
 use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\AnnotatedCommand\Hooks\HookManager;
 use DigitalPolygon\Polymer\Core\Robo\Commands\Artifact\DeployCommand;
-use DigitalPolygon\Polymer\Core\Robo\Exceptions\BadConfigurationValueException;
 use DigitalPolygon\Polymer\Core\Robo\Tasks\TaskBase;
+use DigitalPolygon\Polymer\polymer_pantheon_drupal\Hosting\Pantheon\PantheonRepository;
 
 class PantheonArtifactHook extends TaskBase
 {
-    protected const PANTHEON_GIT_URL_REGEX = '/^ssh:\/\/codeserver\.dev\.[a-f0-9\-]+@codeserver\.dev\.[a-f0-9\-]+\.drush\.in:2222\/~\/repository\.git$/';
-    protected const MULTIDEV_NAME_REGEX = '/^(?!.*-.*-)[a-z0-9\-]{1,11}$/';
-
     #[Hook(type: HookManager::OPTION_HOOK, target: DeployCommand::ARTIFACT_DEPLOY_COMMAND)]
     public function addPantheonOptions(AnnotatedCommand $command, AnnotationData $annotationData): void
     {
@@ -56,9 +53,10 @@ class PantheonArtifactHook extends TaskBase
     protected function getPantheonRemotes(): array
     {
         $configuredRemotes = $this->getConfigValue('git.remotes');
+        $repository = $this->repository();
         $pantheonRemotes = [];
         foreach ($configuredRemotes as $remote) {
-            if (preg_match($this->getPantheonRepoRegex(), $remote)) {
+            if ($repository->isPantheonGitUrl($remote)) {
                 $pantheonRemotes[] = $remote;
             }
         }
@@ -73,54 +71,20 @@ class PantheonArtifactHook extends TaskBase
    */
     protected function branchNameIsValid(string $branchName): void
     {
-      // From https://docs.pantheon.io/guides/multidev/create-multidev
-      // Multidev branch names must be all lowercase, no more than 11 characters,
-      // and can contain a dash (-).
-      // Environments cannot be created with the following reserved names:
-
-      // Check if branch is master and allow it.
-        if ('master' === $branchName) {
-          // Always allow pushes to Pantheon master.
-            return;
-        }
-
-      // Assume all other branches are meant for multidev environments. Validate
-      // against Pantheon's multidev environment naming requirements.
-        if (!preg_match(self::MULTIDEV_NAME_REGEX, $branchName)) {
-            throw new \Exception("Branch name '$branchName' is invalid. Pantheon multidev branch names must be all lowercase, no more than 11 characters, and can contain a dash (-).");
-        }
-
-      // The following names are reserved by Pantheon and cannot be used as
-      // multidev environment names.
-        $bannedMultidevNames = [
-        'settings',
-        'team',
-        'support',
-        'multidev',
-        'debug',
-        'files',
-        'tags',
-        'billing',
-        ];
-        if (in_array($branchName, $bannedMultidevNames, true)) {
-            throw new \Exception("Branch name '$branchName' is invalid. Pantheon multidev branch names cannot be any of the following: " . implode(', ', $bannedMultidevNames));
-        }
+        $this->repository()->assertValidMultidevBranch($branchName);
     }
 
     protected function getPantheonRepoRegex(): string
     {
-        $configuredRegex = $this->getConfigValue('pantheon.git-repo-regex');
-        try {
-            if (is_string($configuredRegex)) {
-                if (@preg_match($configuredRegex, 'asdfadf') === false) {
-                    throw new BadConfigurationValueException('pantheon.git-repo-regex', $configuredRegex, self::PANTHEON_GIT_URL_REGEX);
-                }
-            }
-        } catch (BadConfigurationValueException $e) {
-            if ($this->logger) {
-                $this->logger->warning($e->getMessage());
-            }
-        }
-        return self::PANTHEON_GIT_URL_REGEX;
+        return $this->repository()->gitRepoRegex();
+    }
+
+    /**
+     * Built from the hook's own config/logger (not the container) so the
+     * hook stays directly constructible in unit tests.
+     */
+    protected function repository(): PantheonRepository
+    {
+        return new PantheonRepository($this->getConfig(), $this->logger);
     }
 }

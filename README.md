@@ -62,8 +62,11 @@ is expressed by **nesting under** those roots — `Plugin\Template\Hosting\Panth
 is discovered exactly like `Plugin\Template\PantheonYaml` would be. No core change
 is needed; the fixed discovery roots stay the uniform convention for every plugin.
 
-**Commands currently stay flat** at `Plugin\Commands`: `NewRelicCommands` (agnostic)
-depends on `PantheonFileCommands` constants, and `PantheonFileCommands` mixes
-agnostic Terminus-plugin management with Drupal-specific file generation. Seaming
-them cleanly needs a small refactor (lift the shared Terminus-plugin constants into
-`Hosting/`), not just a move — so it's deferred rather than forced.
+**Commands are seamed** like everything else (PWT-130): agnostic Terminus and
+platform-file commands live under `Plugin\Commands\Hosting`
+(`TerminusCommands`, `PantheonFileCommands`, `NewRelicCommands`), Drupal-coupled
+commands under `Plugin\Commands\Drupal` (`PantheonDrupalCommands`). The shared
+Terminus knowledge lives in `Hosting\Terminus\` (`TerminusClient` for the
+configurable binary, `TerminusPlugins` for plugin ids and the validator
+selector), and the Pantheon repository/multidev rules in
+`Hosting\Pantheon\PantheonRepository`. Command names and aliases are unchanged.
